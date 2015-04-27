@@ -37,6 +37,25 @@ class Config {
 		echo $this->_configFolder;
 	}
 
+	public function includeConfigFile ($path){
+		if(!$path){
+			//TODO
+			throw new \Exception ('Invalid path');
+		}
+		$_file = realpath($path);
+		if ($_file != false && is_file($_file) && is_readable($_file)){
+			$_basename  = explode('.php', basename($_file))[0];
+			include $_file;
+			$this-> _configArray[$_basename] = $cnf;
+		} else {
+			//TODO
+			throw new \Exception ('Config file read error: ' . $path);
+		}
+	}
+	/**
+	 * @param $name
+	 * @return null
+	 */
 	public function __get($name){
 		if (!$this->_configArray[$name]){
 			$this->includeConfigFile($this->_configFolder . $name . '.php');

@@ -7,7 +7,9 @@ $app = \GF\App::getInstance();
 $config = \GF\Config::getInstance();
 $config->setConfigFolder('../config');
 
+echo $config->app['test1'];
 $app->run();
+
 //https://youtu.be/bDWTlB4T7fc?list=PLjsqymUqgpST6BDlzkn7cztPXZYP-4kYD&t=873
 
 
