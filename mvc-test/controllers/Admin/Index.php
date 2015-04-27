@@ -6,13 +6,12 @@
  * Time: 16:04
  */
 
-namespace Controllers;
+namespace Controllers\Admin;
 
 
 class Index {
-public $p = 'gosdho';
 	public function main(){
 		echo "Raboti";
 
-	}
+}
 }

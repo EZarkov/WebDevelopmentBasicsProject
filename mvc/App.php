@@ -36,14 +36,15 @@ class App {
 	 * @return \GF\Config
 	 */
 	public function getConfigFolder() {
-		$this->_config->getConfigFolder();
+		return $this->_config->getConfigFolder();
 	}
 
 	/**
 	 * @return \GF\Config
 	 */
 	public function getConfig() {
-		$this->_config;
+		return $this->_config;
+
 	}
 
 	/**
