@@ -65,7 +65,9 @@ final class Loader {
 			throw new \Exception ('Invalid namespace ' . $namespace);
 		}
 	}
-
+	public static function registerNamespaces($ns){
+		//TODO
+	}
 	public static function getNamespaces() {
 		return self::$namespaces;
 	}

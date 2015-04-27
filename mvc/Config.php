@@ -19,6 +19,12 @@ class Config {
 	}
 
 	/**
+	 * @return null
+	 */
+	public function getConfigFolder (){
+		return $this->_configFolder;
+	}
+	/**
 	 * @param $configFolder
 	 * @throws \Exception
 	 */
@@ -31,12 +37,19 @@ class Config {
 			//clear old configs
 			$this->_configArray = array();
 			$this->_configFolder = $_configFolder . DIRECTORY_SEPARATOR;
+			$ns = $this->app['namespaces'];
+			if(is_array($ns)){
+				\GF\Loader::registerNamespaces($ns);
+			}
 		} else {
 			throw new \Exception ('Config directory read error: ' . $configFolder);
 		}
-		echo $this->_configFolder;
 	}
 
+	/**
+	 * @param $path
+	 * @throws \Exception
+	 */
 	public function includeConfigFile ($path){
 		if(!$path){
 			//TODO
@@ -45,8 +58,7 @@ class Config {
 		$_file = realpath($path);
 		if ($_file != false && is_file($_file) && is_readable($_file)){
 			$_basename  = explode('.php', basename($_file))[0];
-			include $_file;
-			$this-> _configArray[$_basename] = $cnf;
+			$this-> _configArray[$_basename] = include $_file;
 		} else {
 			//TODO
 			throw new \Exception ('Config file read error: ' . $path);
