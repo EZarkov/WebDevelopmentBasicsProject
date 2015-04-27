@@ -1,0 +1,43 @@
+#logo {
+    float: left;
+}
+#logo img {
+    max-width: 70px;
+    max-height: 70px;
+    margin-top: 20px;
+}
+#head-login {
+    float:right;
+}
+#head-login form{
+    margin-top: 36px;
+}
+#head-login input[type="text"], #head-login input[type="password"] {
+    width: 180px;
+    height: 26px;
+    border: none;
+    border-radius: 2px;
+    background: #eeeeee;
+    margin: 0 0 4px 0;
+    padding: 0 5px;
+}
+#head-login input[type="submit"] {
+    width: 60px;
+    height: 26px;
+    border: none;
+    border-radius: 2px;
+    background: #ffffff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+#head-login span a{
+    margin: 0 0 0 5px;
+    color: #dddddd;
+    text-decoration: none;
+    float: right;
+
+}
+#head-login span a:hover {
+    color: #ffffff;
+}

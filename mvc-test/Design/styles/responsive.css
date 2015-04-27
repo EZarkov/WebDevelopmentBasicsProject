@@ -1,0 +1,79 @@
+@media screen and (max-width: 750px) {
+    body>header{
+        height: 240px;
+        text-align: center;
+    }
+    #logo {
+        float: none;
+    }
+    #head-login {
+        float:none;
+    }
+    #head-login span a{
+        float: none;
+    }
+    #nav-content ul {
+        float: none;
+    }
+    #nav-content ul li{
+        list-style: none;
+        display: block;
+        line-height: 44px;
+        background-color: #9ad9f1;
+        border-bottom: 1px solid #84cff1;
+        float: none;
+    }
+    #nav-content ul li:first-child, #nav-content ul li:first-child a {
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+    }
+    #nav-content ul li:last-child, #nav-content ul li:last-child a {
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+    body>nav {
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+        height: auto;
+        text-align: center;
+        background: #fafafa;
+        margin: 10px 0 0 0;
+    }
+    /*-----*/
+    .group-head ul li:nth-child(1), .group-body ul li:nth-child(1)  {
+        width: 60%;
+        padding: 0 0 0 1%;
+        float:left;
+    }
+    .group-head ul li:nth-child(2),.group-head ul li:nth-child(3),.group-body ul li:nth-child(2),.group-body ul li:nth-child(3){
+        text-align: center;
+        float:left;
+        width: 7%;
+    }
+    .group-head ul li:nth-child(4),.group-body ul li:nth-child(4){
+        text-align: center;
+        float:left;
+        width: 26%;
+    }
+    .group-body ul li:nth-child(1) h3 {
+        line-height: 18px !important;
+        margin: 10px 0 0 0 !important;
+        overflow: hidden;
+    }
+    .group-body ul li:nth-child(1) span {
+        display: none;
+    }
+    /*------*/
+    #ol-posts>li>div>div:nth-child(1) {
+        width: 25%;
+    }
+    #ol-posts>li>div>div:nth-child(2) {
+        width: 75%;
+    }
+    .search-holder {
+        margin: 5px 0 0 0;
+        float: none;
+    }
+}

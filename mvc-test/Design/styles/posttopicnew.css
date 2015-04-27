@@ -1,0 +1,59 @@
+/*--------*/
+.new-topic {
+    width: 100%;
+    text-align: left;
+}
+.new-topic div{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.new-topic input[type="text"],
+.new-topic input[type="email"],
+.new-topic textarea {
+    width: 100%;
+    height: 26px;
+    border-radius: 3px;
+    border: 1px solid #bbbbbb;
+    margin: 3px 0 5px 0;
+    padding: 0 0 0 5px;
+    font-size: 12px;
+
+}
+.new-topic textarea {
+    min-height: 90px;
+    max-width: 100%;
+    padding: 3px 0 0 5px;
+}
+.form-title{
+    font-size: 24px;
+    font-family: 'Roboto Condensed', sans-serif;
+    margin: 15px 0 20px 0;
+}
+.new-topic input[type="submit"] {
+    width: 200px;
+    height: 26px;
+    border-radius: 3px;
+    border:none;
+    margin: 0 0 5px 0;
+    padding: 0 0 0 5px;
+    font-size: 12px;
+    color: #ffffff;
+    background: #444444;
+}
+.new-topic input[type="file"]{
+    position: absolute;
+    z-index: 2;
+    opacity: 0;
+}
+.file-holder{
+    position: relative;
+}
+.bluetext{
+    color: #00c5e8;
+    font-size: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.bluetext:hover{
+    text-decoration: none;
+    color: #88e0e8;
+}

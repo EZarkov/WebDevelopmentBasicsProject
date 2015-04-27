@@ -1,0 +1,47 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Lato);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:600);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+    font-size: 13px;
+}
+body {
+    background-color: #fafafa;
+}
+body>header{
+    height: 120px;
+    background-color: #222222;
+    width: 100%;
+}
+#head-content, #nav-content, #foot-content {
+    max-width: 960px;
+    margin: 0 auto;
+    color: white;
+}
+body>nav{
+    height: 44px;
+    background-color: #9ad9f1;
+    width: 100%;
+}
+body>main {
+    max-width: 960px;
+    min-height: 800px;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #fafafa;
+}
+body>footer{
+    height: 100px;
+    background-color: #111111;
+    width: 100%;
+}
+#foot-content {
+    line-height: 100px;
+}
+body>footer {
+}

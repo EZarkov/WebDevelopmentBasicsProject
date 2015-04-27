@@ -1,0 +1,142 @@
+#forum>h2 {
+    font-size: 22px;
+    font-family: "Open Sans", sans-serif;
+    margin: 15px 0;
+}
+
+#ol-posts>li{
+    list-style: none;
+    display: block;
+    width: 100%;
+}
+#ol-posts>li>header {
+    display: block;
+    width: 100%;
+    background: #00c5e8;
+    height: 25px;
+    line-height: 25px;
+    padding: 0 0 0 10px;
+    color: #ffffff;
+    font-size: 16px !important;
+    font-weight: bold;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+#ol-posts>li>div {
+    width: 100%;
+    border-bottom: 1px solid #cccccc;
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+#ol-posts>li>div:before{
+
+    display: table;
+    content: " ";
+}
+#ol-posts>li>div:after{
+    clear: both;
+    content: " ";
+    display: table;
+}
+/*author info*/
+#ol-posts>li>div>div:nth-child(1) {
+    float: left;
+    width: 15%;
+    padding: 10px;
+    border-right: 1px solid #cccccc;
+}
+#ol-posts>li>div>div:nth-child(1) img{
+    max-width: 100%;
+    max-height: 100%;
+    border: 1px solid #555555;
+}
+#ol-posts>li>div>div:nth-child(1) span{
+    width: 100%;
+    display: block;
+    text-align: center;
+    color: #666666;
+    font-size: 11px;
+}
+.username{
+    margin: 0 0 6px 0;
+}
+.username a{
+    color: #444444;
+    font-size: 13px;
+    text-decoration: underline;
+}
+.username a:hover{
+    color: #666666;
+    text-decoration: none;
+}
+.votes {
+    text-align: center;
+    margin: 6px 0 0 0;
+}
+.votes>span:nth-child(1){
+    margin: 0 0 4px 0;
+}
+.voteup, .votedown {
+    display: inline-block !important;
+    width: 20px !important;
+    height: 20px !important;
+    margin: 0 3px;
+}
+.voteup a, .votedown a{
+    display: inline-block !important;
+    width: 20px !important;
+    height: 20px !important;
+    line-height: 20px !important;
+    background: #e1f2f8;
+    border-radius: 3px;
+    text-decoration: none;
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    border: 1px solid #cccccc;
+}
+.voteup a:hover, .votedown a:hover{
+    background: #e9f6f8;
+    border: 1px solid #dddddd;
+}
+.voteup a{
+    color: green;
+}
+.votedown a{
+    color: red;
+}
+
+/*post itself*/
+#ol-posts>li>div>div:nth-child(2) {
+    padding: 10px;
+    float: left;
+    margin: 0;
+    width: 85%;
+}
+.post-buttons{
+    text-align: right;
+    margin: 4px 0 0 0!important;
+}
+.post-buttons div{
+    display: inline-block;
+    text-align: center;
+    margin: 0 0 5px 0;
+}
+.post-buttons div a{
+    display: inline-block;
+    background: #eeeeee;
+    padding: 5px;
+    border-radius: 3px;
+    color: #222222;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: "Open Sans", sans-serif;
+    font-size: 10px;
+    border: 1px solid #aaaaaa;
+}
+.post-buttons div a:hover{
+    background: #f7f7f7;
+    border: 1px solid #cccccc;
+}

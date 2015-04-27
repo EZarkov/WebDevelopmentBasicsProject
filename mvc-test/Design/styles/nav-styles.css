@@ -1,0 +1,45 @@
+#nav-content ul {
+    float: left;
+}
+#nav-content ul li{
+    list-style: none;
+    display: inline-block;
+    line-height: 44px;
+}
+#nav-content ul li a{
+    color: #222222;
+    text-decoration: none;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 15px;
+    line-height: 44px;
+    height: 100%;
+    display: block;
+    padding: 0 10px;
+}
+#nav-content ul li a:hover{
+    color: #555555;
+    background-color: #c9ecf9;
+}
+.search-holder {
+    float: right;
+}
+.search-holder form input[type="text"]{
+    width: 200px;
+    height: 24px;
+    border-radius: 3px;
+    border: 1px solid #aaa;
+    margin: 9px 0 0 0;
+    padding: 0 0 0 5px;
+    font-size: 12px;
+}
+.search-holder form input[type="submit"]{
+    width: 24px;
+    height: 24px;
+    border-radius: 3px;
+    border: none;
+    margin: 9px 0 0 -29px;
+    padding: 0 0 0 5px;
+    font-size: 12px;
+    background: url('../images/magnglassicon.png') 5px 5px no-repeat;
+    background-size: 14px 14px;
+}

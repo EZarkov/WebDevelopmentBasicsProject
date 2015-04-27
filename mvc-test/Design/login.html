@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" href="styles/header-styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/nav-styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/main-style.css">
+    <link rel="stylesheet" type="text/css" href="styles/post-style.css">
+    <link rel="stylesheet" type="text/css" href="styles/responsive.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <title><?php ?></title>
+</head>
+<body>
+
+<header>
+    <div id="head-content">
+        <div id="logo">
+            <a href="#"><img src="images/samplelogo.png"></a>
+            <h3>LMN's Forum</h3>
+        </div>
+        <div id="head-login">
+            <form method="post">
+                <label></label>
+                <input type="text" name="username" id="username">
+                <input type="password" name="password" id="password">
+                <input type="submit" name="submit" id="submit" value="Login">
+                <br>
+                <span><a href="#">Регистрация</a></span>
+                <span><a href="#">Забравена парола</a></span>
+            </form>
+
+        </div>
+    </div>
+</header>
+
+<!-- ------------------------------------------ -->
+
+<nav>
+    <div id="nav-content">
+        <ul>
+            <li><a href="#">Бутон 1</a></li>
+            <li><a href="#">Начало</a></li>
+            <li><a href="#">Край</a></li>
+            <li><a href="#">Среда</a></li>
+            <li><a href="#">Десен фланг</a></li>
+            <li><a href="#">Лорем Ипсум</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ------------------------------------------ -->
+
+<main>
+    <div>
+
+    <!--<h2 class="category-title">ЛОГИН / РЕГИСТРАЦИЯ</h2>-->
+    <div id="forum">
+        <form action="post" class="login-registration">
+            <h2 class="form-title">ВХОД</h2>
+            <p>Ако вече имате регистрация влезте като попълните данните си:</p>
+            <input type="text" name="username" placeholder="Потребителско име"><br />
+            <input type="password" name="password" placeholder="******"><br />
+            <input type="submit" name="submit" value="ВХОД">
+        </form>
+        <form action="post" class="login-registration">
+            <h2 class="form-title">РЕГИСТРАЦИЯ</h2>
+            <p>Ако все още нямате акаунт можете да се регистрирате от тук:</p>
+            <input type="text" name="username" placeholder="Потребителско име"><br />
+            <input type="password" name="password" placeholder="******"><br />
+            <input type="email" name="password" placeholder="Email"><br />
+            <div class="file-holder">
+                <input type="file" name="avatar">
+                <input type="text" name="avatar" placeholder="Click here to choose avatar">
+            </div>
+            <textarea placeholder="Описание за вас"></textarea><br>
+            <input type="submit" name="submit" value="РЕГИСТРАЦИЯ">
+        </form>
+    </div>
+    </div>
+</main>
+
+<!-- ------------------------------------------ -->
+
+<footer>
+    <div id="foot-content">
+        All rights reserved!
+    </div>
+</footer>
+
+</body>
+</html>
