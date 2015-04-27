@@ -17,7 +17,7 @@ class FrontController {
 	}
 
 	public function dispatch(){
-		$a = new Routers\DefautRouter();
+		$a = new Routers\DefaultRouter();
 		$a->parse();
 	}
 
