@@ -7,6 +7,7 @@
  */
 namespace GF;
 include_once 'Loader.php';
+
 class App {
 	private static $_instance = null;
 	private $_config = null;
@@ -16,8 +17,8 @@ class App {
 	private $_frontController = null;
 
 
-	private function __construct(){
-		Loader::registerNamespace('GF', dirname(__FILE__).DIRECTORY_SEPARATOR);
+	private function __construct() {
+		Loader::registerNamespace('GF', dirname(__FILE__) . DIRECTORY_SEPARATOR);
 		Loader::registerAutoload();
 		$this->_config = \GF\Config::getInstance();
 
@@ -27,21 +28,21 @@ class App {
 	 * @param $path
 	 * @throws \Exception
 	 */
-	public function setConfigFolder ($path){
+	public function setConfigFolder($path) {
 		$this->_config->setConfigFolder($path);
 	}
 
 	/**
 	 * @return \GF\Config
 	 */
-	public function getConfigFolder (){
+	public function getConfigFolder() {
 		$this->_config->getConfigFolder();
 	}
 
 	/**
 	 * @return \GF\Config
 	 */
-	public function getConfig (){
+	public function getConfig() {
 		$this->_config;
 	}
 
@@ -49,19 +50,21 @@ class App {
 	 *
 	 */
 	public function run() {
-		if($this->_config->getConfigFolder() == null){
+		if ($this->_config->getConfigFolder() == null) {
 			$this->setConfigFolder('../config');
 		}
 		$this->_frontController = \GF\FrontController::getInstance();
 		$this->_frontController->dispatch();
 	}
+
 	/**
 	 * @return \GF\App
 	 */
-	public static function getInstance(){
-		if (self::$_instance == null){
+	public static function getInstance() {
+		if (self::$_instance == null) {
 			self::$_instance = new \GF\App();
 		}
+
 		return self::$_instance;
 	}
 }

@@ -6,7 +6,8 @@
  * Time: 17:48
  */
 
-$cnf['test1'] = 'ok1';
-$cnf['test2'] = 'ok2';
+$cnf['default_controller'] = 'Index2';
+$cnf['default_method'] = 'index';
+$cnf ['namespaces']['Controllers'] = '/home/evstati/dev/WebDevelopmentBasicsProject/mvc-test/controllers';
 
 return $cnf;
