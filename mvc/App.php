@@ -6,6 +6,8 @@
  * Time: 14:42
  */
 namespace GF;
+use GF\Routers\DefaultRouter;
+
 include_once 'Loader.php';
 
 class App {
@@ -15,6 +17,21 @@ class App {
 	 * @var \GF\FrontController
 	 */
 	private $_frontController = null;
+	private $_router =  null;
+
+	/**
+	 * @return null
+	 */
+	public function getRouter() {
+		return $this->_router;
+	}
+
+	/**
+	 * @param null $router
+	 */
+	public function setRouter($router) {
+		$this->_router = $router;
+	}
 
 
 	private function __construct() {
@@ -55,6 +72,19 @@ class App {
 			$this->setConfigFolder('../config');
 		}
 		$this->_frontController = \GF\FrontController::getInstance();
+
+
+		if($this->_router instanceof \GF\Routers\IRouter){
+			$this->_frontController->setRouter($this->_router);
+		} else if ($this->_router == 'JsonRPCRouter'){
+			//TODO Fix when is ready json router
+			$this->_frontController->setRouter(new DefaultRouter());
+		} elseif ($this->_router == 'CLIRPCRouter'){
+			//TODO Fix when is ready CLI router
+			$this->_frontController->setRouter(new DefaultRouter());
+		} else{
+			$this->_frontController->setRouter(new DefaultRouter());
+		}
 		$this->_frontController->dispatch();
 	}
 

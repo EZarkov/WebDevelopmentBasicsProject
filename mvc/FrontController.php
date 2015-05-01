@@ -14,13 +14,31 @@ class FrontController {
 	private $_ns = null;
 	private $_controller = null;
 	private $_method = null;
+	private  $_router = null;
+
+	/**
+	 * @return null
+	 */
+	public function getRouter() {
+		return $this->_router;
+	}
+
+	/**
+	 * @param Routers\IRouter $router
+	 */
+	public function setRouter(Routers\IRouter $router) {
+		$this->_router = $router;
+	}
 	private function __construct() {
 
 	}
 
 	public function dispatch() {
-		$a = new Routers\DefaultRouter();
-		$uri = $a->getURI();
+		if ($this->_router == null){
+			throw new \Exception ('No valid router found.', 500);
+		}
+
+		$uri = $this->_router->getURI();
 		$routers = \GF\App::getInstance()->getConfig()->routers;
 		$rc = null;
 		if (is_array($routers) && count($routers) > 0){
