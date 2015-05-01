@@ -7,7 +7,7 @@
  */
 $cnf['administration']['namespace'] = 'Controllers\Admin';
 $cnf['admin']['namespace'] = 'Controllers\Admin';
-$cnf['administration']['controllers']['index']['to'] = 'Index';
+$cnf['administration']['controllers']['index']['to'] = 'index';
 $cnf['administration']['controllers']['index']['methods']['new'] = '_new';
 $cnf['administration']['controllers']['new']['to'] = 'create';
 $cnf['*']['namespace'] = 'Controllers';
