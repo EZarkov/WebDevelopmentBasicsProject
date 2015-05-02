@@ -14,7 +14,7 @@ class FrontController {
 	private $_ns = null;
 	private $_controller = null;
 	private $_method = null;
-	private  $_router = null;
+	private $_router = null;
 
 	/**
 	 * @return null
@@ -29,25 +29,27 @@ class FrontController {
 	public function setRouter(Routers\IRouter $router) {
 		$this->_router = $router;
 	}
+
 	private function __construct() {
 
 	}
 
 	public function dispatch() {
-		if ($this->_router == null){
+		if ($this->_router == null) {
 			throw new \Exception ('No valid router found.', 500);
 		}
 
 		$uri = $this->_router->getURI();
 		$routers = \GF\App::getInstance()->getConfig()->routers;
 		$rc = null;
-		if (is_array($routers) && count($routers) > 0){
+		if (is_array($routers) && count($routers) > 0) {
 			foreach ($routers as $key => $value) {
 				if (strpos($uri, $key) === 0
-					&&(strpos($uri, $key.'/') === 0 || $uri == $key)
-					&& $value['namespace'] ){
-					$this->_ns =$value['namespace'];
-					$uri = substr($uri, strlen($key)+1);
+					&& (strpos($uri, $key . '/') === 0 || $uri == $key)
+					&& $value['namespace']
+				) {
+					$this->_ns = $value['namespace'];
+					$uri = substr($uri, strlen($key) + 1);
 					$rc = $value;
 					break;
 				}
@@ -57,18 +59,18 @@ class FrontController {
 			throw new \Exception('Default route is missing', 500);
 		}
 
-		if($this->_ns == null && $routers['*']['namespace']){
+		if ($this->_ns == null && $routers['*']['namespace']) {
 			$this->_ns = $routers['*']['namespace'];
 			$rc = $routers['*']['controllers'];
-		}  elseif($this->_ns == null && !$routers['*']['namespace']) {
+		} elseif ($this->_ns == null && !$routers['*']['namespace']) {
 			throw new \Exception('Default route is missing', 500);
 		}
 
 		$params = explode('/', $uri);
 
-		if ($params[0]){
+		if ($params[0]) {
 			$this->_controller = strtolower($params[0]);
-			if($params[1]){
+			if ($params[1]) {
 
 				$this->_method = strtolower($params[1]);
 			} else {
@@ -80,15 +82,16 @@ class FrontController {
 			$this->_method = $this->getDefaultMethod();
 		}
 
-		if (is_array($rc) && $rc['controllers']){
-			if($rc['controllers'][$this->_controller]['methods'][$this->_method]){
+		if (is_array($rc) && $rc['controllers']) {
+			if ($rc['controllers'][$this->_controller]['methods'][$this->_method]) {
 				$this->_method = strtolower($rc['controllers'][$this->_controller]['methods'][$this->_method]);
 			}
-			if(isset($rc['controllers'][$this->_controller]['to'])){
-			$this->_controller = strtolower($rc['controllers'][$this->_controller]['to']);
+			if (isset($rc['controllers'][$this->_controller]['to'])) {
+				$this->_controller = strtolower($rc['controllers'][$this->_controller]['to']);
 			}
 		}
-		$f = $this->_ns.'\\'. ucfirst($this->_controller);
+		//TODO fixit
+		$f = $this->_ns . '\\' . ucfirst($this->_controller);
 		$newController = new $f();
 
 		$newController->{$this->_method}();
