@@ -56,7 +56,9 @@ class Config {
 			//TODO
 			throw new \Exception ('Invalid path');
 		}
+
 		$_file = realpath($path);
+
 		if ($_file != false && is_file($_file) && is_readable($_file)) {
 			$_basename = explode('.php', basename($_file))[0];
 			$this->_configArray[$_basename] = include $_file;

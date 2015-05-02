@@ -19,6 +19,7 @@ class App {
 	 */
 	private $_frontController = null;
 	private $_router = null;
+	private $_dbConections = array();
 
 	/**
 	 * @return null
@@ -39,6 +40,9 @@ class App {
 		Loader::registerNamespace('GF', dirname(__FILE__) . DIRECTORY_SEPARATOR);
 		Loader::registerAutoload();
 		$this->_config = \GF\Config::getInstance();
+		if ($this->_config->getConfigFolder() == null) {
+			$this->setConfigFolder('../config');
+		}
 
 	}
 
@@ -69,9 +73,7 @@ class App {
 	 *
 	 */
 	public function run() {
-		if ($this->_config->getConfigFolder() == null) {
-			$this->setConfigFolder('../config');
-		}
+
 		$this->_frontController = \GF\FrontController::getInstance();
 
 
@@ -89,6 +91,29 @@ class App {
 			}
 		}
 		$this->_frontController->dispatch();
+	}
+
+	public function getDBConnection($connection = 'default') {
+		//Gataka  have mistake we always have connection because we have default value;
+		if(!$connection){
+			throw new \Exception ('No connection identifier provided.', 500);
+		}
+		if ($this->_dbConections[$connection]){
+			return $this->_dbConections[$connection];
+		}
+		$cnf = $this->getConfig()->database;
+		if(!$cnf[$connection]){
+			throw new \Exception ('No connection identifier provided.', 500);
+		}
+
+		$db = new \PDO(
+			$cnf[$connection]['connection_url'],
+			$cnf[$connection]['username'],
+			$cnf[$connection]['pass'],
+			$cnf[$connection]['pdo_options']
+			);
+		$this->_dbConections[$connection] = $db;
+		return $db;
 	}
 
 	/**
