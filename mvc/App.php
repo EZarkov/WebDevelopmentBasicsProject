@@ -20,6 +20,7 @@ class App {
 	private $_frontController = null;
 	private $_router = null;
 	private $_dbConections = array();
+	private $_session = null;
 
 	/**
 	 * @return null
@@ -73,9 +74,11 @@ class App {
 	 *
 	 */
 	public function run() {
-
+		$this->_config = \GF\Config::getInstance();
+		if ($this->_config->getConfigFolder() == null) {
+			$this->setConfigFolder('../config');
+		}
 		$this->_frontController = \GF\FrontController::getInstance();
-
 
 		if ($this->_router instanceof \GF\Routers\IRouter) {
 			$this->_frontController->setRouter($this->_router);
@@ -90,7 +93,29 @@ class App {
 				$this->_frontController->setRouter(new DefaultRouter());
 			}
 		}
+		$sess = $this->_config->app['session'];
+			if($sess['autostart']){
+				if ($sess['type'] == 'native'){
+					$session = new \GF\Session\NativeSession($sess['name'], $sess['lifetime'], $sess['path'], $sess['domain'], $sess['secure']);
+				}
+				$this->setSession($session);
+
+			}
 		$this->_frontController->dispatch();
+	}
+
+	/**
+	 * @param Session\ISession $session
+	 */
+	public function setSession(Session\ISession $session) {
+		$this->_session = $session;
+	}
+
+	/**
+	 * @return \GF\Session\ISession
+	 */
+	public function getSession() {
+		return $this->_session;
 	}
 
 	public function getDBConnection($connection = 'default') {
@@ -122,6 +147,9 @@ class App {
 	public static function getInstance() {
 		if (self::$_instance == null) {
 			self::$_instance = new \GF\App();
+			echo 'i am null<br>';
+		} else {
+			echo 'i am not null<br>';
 		}
 
 		return self::$_instance;

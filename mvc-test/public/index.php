@@ -5,23 +5,42 @@ ini_set('display_errors', 1);
 include '../../mvc/App.php';
 $app = \GF\App::getInstance();
 //Run always first because this initialize all default configs.
-
-
-
-$db= new \GF\DB\SimpleDB();
-//$a = $db->prepare('SELECT * FROM user WHERE user_id = ?')->execute(array(1))->fetchAllAssoc();
-//echo '<pre>' . print_r($a, true) . '</pre>';
-
 $app->run();
+var_dump($_SESSION);
+$app->getSession()->counter += +1;
+echo $app->getSession()->counter . "<br>";
+$app->getSession()->counter += +1;
+echo $app->getSession()->counter . "<br>";
+$app->getSession()->counter += +1;
+echo $app->getSession()->counter . "<br>";
+$app->getSession()->counter += +1;
+echo $app->getSession()->counter . "<br>";
+$app->getSession()->counter += +1;
+echo $app->getSession()->counter . "<br>";
+$app->getSession()->counter += +1;
+echo $app->getSession()->counter . "<br>";
+$app->getSession()->counter += +1;
+echo $app->getSession()->counter . "<br>";
+$app->getSession()->counter += +1;
+echo $app->getSession()->counter . "<br>";
+$app->getSession()->counter += +1;
+echo $app->getSession()->counter . "<br>";
+$app->getSession()->counter += +1;
+echo $app->getSession()->counter . "<br>";
+$app->getSession()->counter += +1;
+echo $app->getSession()->counter . "<br>";
+$app->getSession()->counter += +1;
+echo $app->getSession()->counter . "<br>";
+$app->getSession()->counter += +1;
+echo $app->getSession()->counter . "<br>";
+$app->getSession()->counter += +1;
+echo $app->getSession()->counter . "<br>";
+$app->getSession()->counter += +1;
+echo $app->getSession()->counter . "<br>";
+$app->getSession()->counter += +1;
+echo $app->getSession()->counter . "<br>";
+$app->getSession()->counter += +1;
+echo $app->getSession()->counter . "<br>";
 
 
-
-
-$app->setRouter("AA");
-
-
-
-
-
-
-
+var_dump($_SESSION);

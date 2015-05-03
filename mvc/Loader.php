@@ -35,7 +35,6 @@ final class Loader {
 				$file = str_replace('\\', DIRECTORY_SEPARATOR, $class);
 				$file = substr_replace($file, $value, 0, strlen($key)) . '.php';
 				$file = realpath($file);
-
 				if ($file && is_readable($file)) {
 					include $file;
 				} else {
