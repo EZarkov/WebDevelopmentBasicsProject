@@ -20,12 +20,12 @@ class NativeSession implements ISession {
 	 * @param bool $secure
 	 */
 	public function __construct($name, $lifetime = 3600, $path = null, $domain = null, $secure = false) {
-		if(strlen($name) < 1){
+		if (strlen($name) < 1) {
 			$name = '_sess';
 		}
-			session_name($name);
-			session_set_cookie_params($lifetime, $path, $domain, $secure, true); // 5 - param is set at true to prevent js accses  to cookies
-			session_start();
+		session_name($name);
+		session_set_cookie_params($lifetime, $path, $domain, $secure, true); // 5 - param is set at true to prevent js accses  to cookies
+		session_start();
 
 	}
 
