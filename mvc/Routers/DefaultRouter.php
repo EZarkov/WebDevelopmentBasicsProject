@@ -5,7 +5,7 @@
  * Date: 27.04.15
  * Time: 13:55
  */
-namespace GF\Routers;
+namespace MVC\Routers;
 class DefaultRouter implements IRouter {
 	private $_controller = null;
 	private $_method = null;

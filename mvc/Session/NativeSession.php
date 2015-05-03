@@ -6,7 +6,7 @@
  * Time: 19:44
  */
 
-namespace GF\Session;
+namespace MVC\Session;
 
 
 class NativeSession implements ISession {

@@ -6,7 +6,7 @@
  * Time: 15:10
  */
 
-namespace GF;
+namespace MVC;
 
 
 final class Loader {
@@ -17,7 +17,7 @@ final class Loader {
 	}
 
 	public static function registerAutoload() {
-		spl_autoload_register(array('\GF\Loader', 'autoload'));
+		spl_autoload_register(array('\MVC\Loader', 'autoload'));
 	}
 
 	public static function autoload($class) {

@@ -6,10 +6,10 @@
  * Time: 13:42
  */
 
-namespace GF\Session;
+namespace MVC\Session;
 
 
-class DBSession extends \GF\DB\SimpleDB implements \GF\Session\ISession {
+class DBSession extends \MVC\DB\SimpleDB implements \MVC\Session\ISession {
 
 	//TODO Ask Momchil: Use extends SimpleDB or create new DB obj
 

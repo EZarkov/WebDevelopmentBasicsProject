@@ -6,7 +6,7 @@
  * Time: 17:03
  */
 
-namespace GF\DB;
+namespace MVC\DB;
 
 
 class SimpleDB {
@@ -27,10 +27,10 @@ class SimpleDB {
 		if ($connection instanceof \PDO) {
 			$this->_db = $connection;
 		} elseif ($connection != null) {
-			$this->_db = \GF\App::getInstance()->getDBConnection($connection);
+			$this->_db = \MVC\App::getInstance()->getDBConnection($connection);
 			$this->_connection = $connection;
 		} else {
-			$this->_db = \GF\App::getInstance()->getDBConnection($this->_connection);
+			$this->_db = \MVC\App::getInstance()->getDBConnection($this->_connection);
 		}
 	}
 
@@ -38,7 +38,7 @@ class SimpleDB {
 	 * @param $sql
 	 * @param array $params
 	 * @param array $pdoOptions
-	 * @return \GF\DB\SimpleDB
+	 * @return \MVC\DB\SimpleDB
 	 */
 	public function prepare($sql, $params = array(), $pdoOptions = array()){
 		$this->_stmt = $this->_db->prepare($sql, $pdoOptions);
@@ -49,7 +49,7 @@ class SimpleDB {
 
 	/**
 	 * @param array $params
-	 * @return  \GF\DB\SimpleDB
+	 * @return  \MVC\DB\SimpleDB
 	 */
 	public function execute($params = array()) {
 		if($params){

@@ -6,7 +6,7 @@
  * Time: 16:27
  */
 
-namespace GF;
+namespace MVC;
 
 
 class Common {

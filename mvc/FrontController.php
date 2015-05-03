@@ -6,7 +6,7 @@
  * Time: 13:40
  */
 
-namespace GF;
+namespace MVC;
 
 
 class FrontController {
@@ -40,7 +40,7 @@ class FrontController {
 		}
 
 		$uri = $this->_router->getURI();
-		$routers = \GF\App::getInstance()->getConfig()->routers;
+		$routers = \MVC\App::getInstance()->getConfig()->routers;
 		$rc = null;
 		if (is_array($routers) && count($routers) > 0) {
 			foreach ($routers as $key => $value) {
@@ -99,7 +99,7 @@ class FrontController {
 	}
 
 	public function getDefaultController() {
-		$controller = \GF\App::getInstance()->getConfig()->app['default_controller'];
+		$controller = \MVC\App::getInstance()->getConfig()->app['default_controller'];
 		if ($controller) {
 			return strtolower($controller);
 		}
@@ -108,7 +108,7 @@ class FrontController {
 	}
 
 	public function getDefaultMethod() {
-		$method = \GF\App::getInstance()->getConfig()->app['default_method'];
+		$method = \MVC\App::getInstance()->getConfig()->app['default_method'];
 
 		if ($method) {
 			return strtolower($method);
@@ -118,11 +118,11 @@ class FrontController {
 	}
 
 	/**
-	 * @return \GF\FrontController
+	 * @return \MVC\FrontController
 	 */
 	public static function getInstance() {
 		if (self::$_instance == null) {
-			self::$_instance = new \GF\FrontController();
+			self::$_instance = new \MVC\FrontController();
 		}
 
 		return self::$_instance;

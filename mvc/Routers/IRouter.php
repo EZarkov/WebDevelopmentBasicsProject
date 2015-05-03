@@ -5,7 +5,7 @@
  * Date: 27.04.15
  * Time: 15:54
  */
-namespace GF\Routers;
+namespace MVC\Routers;
 interface IRouter {
 	public function getURI();
 }

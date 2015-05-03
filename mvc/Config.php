@@ -6,7 +6,7 @@
  * Time: 16:53
  */
 
-namespace GF;
+namespace MVC;
 
 
 class Config {
@@ -40,7 +40,7 @@ class Config {
 			$this->_configFolder = $_configFolder . DIRECTORY_SEPARATOR;
 			$ns = $this->app['namespaces'];
 			if (is_array($ns)) {
-				\GF\Loader::registerNamespaces($ns);
+				\MVC\Loader::registerNamespaces($ns);
 			}
 		} else {
 			throw new \Exception ('Config directory read error: ' . $configFolder);
@@ -88,7 +88,7 @@ class Config {
 	 */
 	public static function getInstance() {
 		if (self::$_instance == null) {
-			self::$_instance = new \GF\Config();
+			self::$_instance = new \MVC\Config();
 		}
 
 		return self::$_instance;

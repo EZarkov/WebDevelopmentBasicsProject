@@ -5,9 +5,9 @@
  * Date: 23.04.15
  * Time: 14:42
  */
-namespace GF;
+namespace MVC;
 
-use GF\Routers\DefaultRouter;
+use MVC\Routers\DefaultRouter;
 
 include_once 'Loader.php';
 
@@ -15,7 +15,7 @@ class App {
 	private static $_instance = null;
 	private $_config = null;
 	/**
-	 * @var \GF\FrontController
+	 * @var \MVC\FrontController
 	 */
 	private $_frontController = null;
 	private $_router = null;
@@ -41,7 +41,7 @@ class App {
 
 
 	private function __construct() {
-		Loader::registerNamespace('GF', dirname(__FILE__) . DIRECTORY_SEPARATOR);
+		Loader::registerNamespace('MVC', dirname(__FILE__) . DIRECTORY_SEPARATOR);
 		Loader::registerAutoload();
 	}
 
@@ -54,14 +54,14 @@ class App {
 	}
 
 	/**
-	 * @return \GF\Config
+	 * @return \MVC\Config
 	 */
 	public function getConfigFolder() {
 		return $this->_config->getConfigFolder();
 	}
 
 	/**
-	 * @return \GF\Config
+	 * @return \MVC\Config
 	 */
 	public function getConfig() {
 		return $this->_config;
@@ -72,13 +72,13 @@ class App {
 	 *
 	 */
 	public function run() {
-		$this->_config = \GF\Config::getInstance();
+		$this->_config = \MVC\Config::getInstance();
 		if ($this->_config->getConfigFolder() == null) {
 			$this->setConfigFolder('../config');
 		}
-		$this->_frontController = \GF\FrontController::getInstance();
+		$this->_frontController = \MVC\FrontController::getInstance();
 
-		if ($this->_router instanceof \GF\Routers\IRouter) {
+		if ($this->_router instanceof \MVC\Routers\IRouter) {
 			$this->_frontController->setRouter($this->_router);
 		} else {
 			if ($this->_router == 'JsonRPCRouter') {
@@ -96,9 +96,9 @@ class App {
 			if($sess['autostart']){
 				if ($sess['type'] == 'native'){
 
-					$session = new \GF\Session\NativeSession($sess['name'], $sess['lifetime'], $sess['path'], $sess['domain'], $sess['secure']);
+					$session = new \MVC\Session\NativeSession($sess['name'], $sess['lifetime'], $sess['path'], $sess['domain'], $sess['secure']);
 				} elseif ($sess['type'] == 'database'){
-					$session = new \GF\Session\DBSession(
+					$session = new \MVC\Session\DBSession(
 						$sess['dbConnection'],
 						$sess['name'],
 						$sess['dbTable'],
@@ -123,7 +123,7 @@ class App {
 	}
 
 	/**
-	 * @return \GF\Session\ISession
+	 * @return \MVC\Session\ISession
 	 */
 	public function getSession() {
 		return $this->_session;
@@ -153,11 +153,11 @@ class App {
 	}
 
 	/**
-	 * @return \GF\App
+	 * @return \MVC\App
 	 */
 	public static function getInstance() {
 		if (self::$_instance == null) {
-			self::$_instance = new \GF\App();
+			self::$_instance = new \MVC\App();
 		}
 
 		return self::$_instance;

@@ -6,7 +6,7 @@
  * Time: 16:11
  */
 
-namespace GF;
+namespace MVC;
 
 
 class InputData {
@@ -70,7 +70,7 @@ class InputData {
 	public function get($id, $normalize = null, $default = null) {
 		if ($this->hasGet($id)) {
 			if ($normalize != null) {
-				return \GF\Common::normalize($this->_get[$id], $normalize);
+				return \MVC\Common::normalize($this->_get[$id], $normalize);
 			}
 
 			return $this->_get[$id];
@@ -82,7 +82,7 @@ class InputData {
 	public function post($key, $normalize = null, $default = null) {
 		if ($this->hasGet($key)) {
 			if ($normalize != null) {
-				return \GF\Common::normalize($this->_post[$key], $normalize);
+				return \MVC\Common::normalize($this->_post[$key], $normalize);
 			}
 
 			return $this->_post[$key];
@@ -94,7 +94,7 @@ class InputData {
 	public function cookies($name, $normalize = null, $default = null) {
 		if ($this->hasCookie($name)) {
 			if ($normalize != null) {
-				return \GF\Common::normalize($this->_cookies[$name], $normalize);
+				return \MVC\Common::normalize($this->_cookies[$name], $normalize);
 			}
 
 			return $this->_cookies[$name];
