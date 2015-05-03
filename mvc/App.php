@@ -20,6 +20,9 @@ class App {
 	private $_frontController = null;
 	private $_router = null;
 	private $_dbConections = array();
+	/**
+	 * @var Session\ISession
+	 */
 	private $_session;
 
 	/**
@@ -40,11 +43,6 @@ class App {
 	private function __construct() {
 		Loader::registerNamespace('GF', dirname(__FILE__) . DIRECTORY_SEPARATOR);
 		Loader::registerAutoload();
-		$this->_config = \GF\Config::getInstance();
-		if ($this->_config->getConfigFolder() == null) {
-			$this->setConfigFolder('../config');
-		}
-
 	}
 
 	/**
@@ -94,10 +92,22 @@ class App {
 			}
 		}
 		$sess = $this->_config->app['session'];
+		$session = false;
 			if($sess['autostart']){
 				if ($sess['type'] == 'native'){
 
 					$session = new \GF\Session\NativeSession($sess['name'], $sess['lifetime'], $sess['path'], $sess['domain'], $sess['secure']);
+				} elseif ($sess['type'] == 'database'){
+					$session = new \GF\Session\DBSession(
+						$sess['dbConnection'],
+						$sess['name'],
+						$sess['dbTable'],
+						$sess['lifetime'],
+						$sess['path'],
+						$sess['domain'],
+						$sess['secure']);
+				} else {
+					throw new \Exception ('No valid session config.', 500);
 				}
 				$this->setSession($session);
 
@@ -151,5 +161,11 @@ class App {
 		}
 
 		return self::$_instance;
+	}
+
+	public function __destruct() {
+		if($this->_session != null){
+			$this->_session->saveSession();
+		}
 	}
 }

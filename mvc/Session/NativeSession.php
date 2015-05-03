@@ -42,11 +42,11 @@ class NativeSession implements ISession {
 		session_destroy();
 	}
 
-	public function getSessionI() {
+	public function getSessionID() {
 		// TODO: Implement getSessionI() method.
 	}
 
-	public function saveSessionI() {
+	public function saveSession() {
 		// TODO: Implement saveSessionI() method.
 	}
 

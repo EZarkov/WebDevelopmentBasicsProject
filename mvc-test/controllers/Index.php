@@ -12,7 +12,7 @@ namespace Controllers;
 class Index {
 public $p = 'gosdho';
 	public function main(){
-		echo "Raboti";
+		//echo "Raboti";
 
 	}
 }

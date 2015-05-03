@@ -10,8 +10,8 @@ namespace Controllers\Admin;
 
 
 class Index {
-	public function main(){
-		echo "Raboti";
+	public function main() {
+		//echo "Raboti";
 
-}
+	}
 }
