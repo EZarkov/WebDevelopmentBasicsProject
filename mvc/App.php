@@ -20,7 +20,7 @@ class App {
 	private $_frontController = null;
 	private $_router = null;
 	private $_dbConections = array();
-	private $_session = null;
+	private $_session;
 
 	/**
 	 * @return null
@@ -96,6 +96,7 @@ class App {
 		$sess = $this->_config->app['session'];
 			if($sess['autostart']){
 				if ($sess['type'] == 'native'){
+
 					$session = new \GF\Session\NativeSession($sess['name'], $sess['lifetime'], $sess['path'], $sess['domain'], $sess['secure']);
 				}
 				$this->setSession($session);
@@ -119,7 +120,7 @@ class App {
 	}
 
 	public function getDBConnection($connection = 'default') {
-		//Gataka  have mistake we always have connection because we have default value;
+		//Gatakka  have mistake we always have connection because we have default value;
 		if(!$connection){
 			throw new \Exception ('No connection identifier provided.', 500);
 		}
@@ -147,9 +148,6 @@ class App {
 	public static function getInstance() {
 		if (self::$_instance == null) {
 			self::$_instance = new \GF\App();
-			echo 'i am null<br>';
-		} else {
-			echo 'i am not null<br>';
 		}
 
 		return self::$_instance;

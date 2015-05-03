@@ -9,7 +9,7 @@ namespace GF\Session;
 interface ISession {
 	public function getSessionI();
 	public function saveSessionI();
-	public function destroySessionI();
+	public function destroySession();
 
 	public function __get($name);
 	public function __set($name, $value);
