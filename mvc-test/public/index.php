@@ -7,6 +7,3 @@ include '../../mvc/App.php';
 $app = \MVC\App::getInstance();
 //Run always first because this initialize all default configs.
 $app->run();
-$app->getSession()->counter += +1;
-echo $app->getSession()->counter . "<br>";
-

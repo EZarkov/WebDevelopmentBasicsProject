@@ -8,12 +8,14 @@
 namespace MVC\Session;
 interface ISession {
 	public function getSessionID();
+
 	public function saveSession();
+
 	public function destroySession();
 
 	public function __get($name);
-	public function __set($name, $value);
 
+	public function __set($name, $value);
 
 
 }

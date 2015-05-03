@@ -9,10 +9,15 @@
 namespace Controllers;
 
 
+
 class Index {
-public $p = 'gosdho';
+
 	public function main(){
-		//echo "Raboti";
+
+		$view = \MVC\View::getInstance();
+		$view->title = 'Dev Forum';
+		$view->appendToLayout('body', 'body');
+		$view->display('layouts/default');
 
 	}
 }

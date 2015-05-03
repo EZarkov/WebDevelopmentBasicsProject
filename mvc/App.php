@@ -92,26 +92,26 @@ class App {
 			}
 		}
 		$sess = $this->_config->app['session'];
-		$session = false;
-			if($sess['autostart']){
-				if ($sess['type'] == 'native'){
 
-					$session = new \MVC\Session\NativeSession($sess['name'], $sess['lifetime'], $sess['path'], $sess['domain'], $sess['secure']);
-				} elseif ($sess['type'] == 'database'){
-					$session = new \MVC\Session\DBSession(
-						$sess['dbConnection'],
-						$sess['name'],
-						$sess['dbTable'],
-						$sess['lifetime'],
-						$sess['path'],
-						$sess['domain'],
-						$sess['secure']);
-				} else {
-					throw new \Exception ('No valid session config.', 500);
-				}
-				$this->setSession($session);
+		if ($sess['autostart']) {
+			if ($sess['type'] == 'native') {
 
+				$session = new \MVC\Session\NativeSession($sess['name'], $sess['lifetime'], $sess['path'], $sess['domain'], $sess['secure']);
+			} elseif ($sess['type'] == 'database') {
+				$session = new \MVC\Session\DBSession(
+					$sess['dbConnection'],
+					$sess['name'],
+					$sess['dbTable'],
+					$sess['lifetime'],
+					$sess['path'],
+					$sess['domain'],
+					$sess['secure']);
+			} else {
+				throw new \Exception ('No valid session config.', 500);
 			}
+			$this->setSession($session);
+
+		}
 		$this->_frontController->dispatch();
 	}
 
@@ -131,14 +131,14 @@ class App {
 
 	public function getDBConnection($connection = 'default') {
 		//Gatakka  have mistake we always have connection because we have default value;
-		if(!$connection){
+		if (!$connection) {
 			throw new \Exception ('No connection identifier provided.', 500);
 		}
-		if ($this->_dbConections[$connection]){
+		if ($this->_dbConections[$connection]) {
 			return $this->_dbConections[$connection];
 		}
 		$cnf = $this->getConfig()->database;
-		if(!$cnf[$connection]){
+		if (!$cnf[$connection]) {
 			throw new \Exception ('No connection identifier provided.', 500);
 		}
 
@@ -147,8 +147,9 @@ class App {
 			$cnf[$connection]['username'],
 			$cnf[$connection]['pass'],
 			$cnf[$connection]['pdo_options']
-			);
+		);
 		$this->_dbConections[$connection] = $db;
+
 		return $db;
 	}
 
@@ -164,7 +165,7 @@ class App {
 	}
 
 	public function __destruct() {
-		if($this->_session != null){
+		if ($this->_session != null) {
 			$this->_session->saveSession();
 		}
 	}

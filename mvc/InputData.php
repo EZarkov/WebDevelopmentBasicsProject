@@ -63,10 +63,11 @@ class InputData {
 		return array_key_exists($key, $this->_post);
 	}
 
-	public function hasCookie($name){
+	public function hasCookie($name) {
 		return array_key_exists($name, $this->_cookies);
 
-}
+	}
+
 	public function get($id, $normalize = null, $default = null) {
 		if ($this->hasGet($id)) {
 			if ($normalize != null) {

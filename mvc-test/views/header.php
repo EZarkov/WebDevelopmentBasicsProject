@@ -2,22 +2,22 @@
 <html>
 <head lang="en">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <link rel="stylesheet" type="text/css" href="views/styles/style.css">
-    <link rel="stylesheet" type="text/css" href="views/styles/header-styles.css">
-    <link rel="stylesheet" type="text/css" href="views/styles/nav-styles.css">
-    <link rel="stylesheet" type="text/css" href="views/styles/main-style.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" href="styles/header-styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/nav-styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/main-style.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <title><?php ?></title>
+    <title><?php echo $this->title;?></title>
 </head>
 <body>
 
 <header>
     <div id="head-content">
         <div id="logo">
-            <a href="#"><img src="views/images/samplelogo.png"></a>
-            <h3>LMN's Forum</h3>
+            <a href="#"><img src="images/samplelogo.png"></a>
+            <h3>Dev's Forum</h3>
         </div>
         <div id="head-login">
             <form method="post">

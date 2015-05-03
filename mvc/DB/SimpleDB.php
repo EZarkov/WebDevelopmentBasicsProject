@@ -40,10 +40,11 @@ class SimpleDB {
 	 * @param array $pdoOptions
 	 * @return \MVC\DB\SimpleDB
 	 */
-	public function prepare($sql, $params = array(), $pdoOptions = array()){
+	public function prepare($sql, $params = array(), $pdoOptions = array()) {
 		$this->_stmt = $this->_db->prepare($sql, $pdoOptions);
 		$this->_params = $params;
 		$this->_sql = $sql;
+
 		return $this;
 	}
 
@@ -52,10 +53,11 @@ class SimpleDB {
 	 * @return  \MVC\DB\SimpleDB
 	 */
 	public function execute($params = array()) {
-		if($params){
+		if ($params) {
 			$this->_params = $params;
 		}
 		$this->_stmt->execute($this->_params);
+
 		return $this;
 	}
 
