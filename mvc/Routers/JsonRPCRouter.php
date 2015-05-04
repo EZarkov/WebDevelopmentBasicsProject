@@ -13,7 +13,8 @@ use MVC\App;
 
 class JsonRPCRouter implements IRouter {
 	private $_map = array();
-	private $_requestId ;
+	private $_post = array();
+	private $_requestId;
 
 	public function __construct() {
 		if ($_SERVER['REQUEST_METHOD'] != 'POST'
@@ -24,14 +25,18 @@ class JsonRPCRouter implements IRouter {
 		};
 	}
 
-	public function setMethodsMap ($array) {
+	public function getPost() {
+		return $this->_post;
+	}
+
+	public function setMethodsMap($array) {
 		if (is_array($array)) {
 			$this->_map = $array;
 		}
 	}
 
 	public function getURI() {
-		if (!is_array($this->_map) || count($this->_map) == 0){
+		if (!is_array($this->_map) || count($this->_map) == 0) {
 			$array = App::getInstance()->getConfig()->rpcRouters;
 			if (is_array($array)) {
 				$this->_map = $array;
@@ -43,10 +48,12 @@ class JsonRPCRouter implements IRouter {
 		if (!is_array($request || !isset($request['method']))) {
 			throw new \Exception('Require json request.', 400);
 		}
-		if(!$this->_map[$request['method']]){
+		if (!$this->_map[$request['method']]) {
 			throw new \Exception ('Method not found.', 501);
-					}
+		}
 		$this->_requestId = $request['id'];
+		$this->_post = $request['params'];
+
 		return $this->_map[$request['method']];
 	}
 }

@@ -14,6 +14,9 @@ class FrontController {
 	private $_ns = null;
 	private $_controller = null;
 	private $_method = null;
+	/**
+	 * @var \MVC\Routers\IRouter
+	 */
 	private $_router = null;
 
 	/**
@@ -67,12 +70,15 @@ class FrontController {
 		}
 
 		$params = explode('/', $uri);
-
+		$input = \MVC\InputData::getInstance();
 		if ($params[0]) {
 			$this->_controller = strtolower($params[0]);
 			if ($params[1]) {
 
 				$this->_method = strtolower($params[1]);
+				unset($params[0], $params[1]);
+				$input->setGet(array_values($params));
+
 			} else {
 
 				$this->_method = $this->getDefaultMethod();
@@ -90,6 +96,8 @@ class FrontController {
 				$this->_controller = strtolower($rc['controllers'][$this->_controller]['to']);
 			}
 		}
+
+		$input->setPost($this->_router->getPost());
 		//TODO fixit
 		$f = $this->_ns . '\\' . ucfirst($this->_controller);
 		$newController = new $f();
