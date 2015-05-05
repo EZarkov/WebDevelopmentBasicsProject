@@ -10,10 +10,13 @@ namespace Controllers;
 
 
 
-class Index {
+class Index extends \MVC\DefaultController {
 
-	public function main(){
+	public function main (){
 
+		$this->app->displayError(556);
+		\MVC\App::getInstance()->displayError(404);
+die;
 		$val = new \MVC\Validation();
 
 		$val->setRule('url', 'http://gong.bg/')->setRule('minLength', 'http://gong.bg/', 5);

@@ -41,6 +41,7 @@ class App {
 
 
 	private function __construct() {
+		set_exception_handler(array($this, 'exceptionHandler'));
 		Loader::registerNamespace('MVC', dirname(__FILE__) . DIRECTORY_SEPARATOR);
 		Loader::registerAutoload();
 	}
@@ -162,6 +163,24 @@ class App {
 		}
 
 		return self::$_instance;
+	}
+
+	public function exceptionHandler(\Exception $exception){
+		if ($this->_config && $this->_config->app['diplayExceptions'] == true) {
+			echo '<pre>' . print_r($exception, true) . '</pre>';
+		} else {
+			$this->displayError($exception->getCode());
+		}
+	}
+	public function displayError($code){
+		try {
+			$view = \MVC\View::getInstance();
+			$view->display('errors/'.$code);
+		} catch(\Exception $exception) {
+			\MVC\Common::headerStatus($code);
+			echo "<h1>$code</h1>";
+			exit;
+		}
 	}
 
 	public function __destruct() {
