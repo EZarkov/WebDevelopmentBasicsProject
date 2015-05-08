@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" href="http://dev-forum.com/styles/style.css">
     <link rel="stylesheet" type="text/css" href="styles/header-styles.css">
     <link rel="stylesheet" type="text/css" href="styles/nav-styles.css">
     <link rel="stylesheet" type="text/css" href="styles/main-style.css">

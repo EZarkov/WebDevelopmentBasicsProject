@@ -20,7 +20,7 @@ class FrontController {
 	private $_router = null;
 
 	/**
-	 * @return null
+	 * @return \MVC\Routers\IRouter
 	 */
 	public function getRouter() {
 		return $this->_router;
@@ -61,7 +61,6 @@ class FrontController {
 		} else {
 			throw new \Exception('Default route is missing', 500);
 		}
-
 		if ($this->_ns == null && $routers['*']['namespace']) {
 			$this->_ns = $routers['*']['namespace'];
 			$rc = $routers['*']['controllers'];

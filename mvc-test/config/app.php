@@ -9,6 +9,7 @@
 $cnf['default_controller'] = 'index';
 $cnf['default_method'] = 'main';
 $cnf ['namespaces']['Controllers'] = '/home/evstati/dev/WebDevelopmentBasicsProject/mvc-test/controllers';
+$cnf ['namespaces']['Models'] = '/home/evstati/dev/WebDevelopmentBasicsProject/mvc-test/models';
 /*
 $cnf['session']['autostart'] = true;
 $cnf['session']['type']= 'native';

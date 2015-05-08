@@ -10,7 +10,8 @@
         </ul>
     </li>
     <?php
-    foreach ($data['system'] as $lang=>$info):
+	var_dump($this->data);
+    foreach ($this->data['system'] as $lang=>$info):
     ?>
     <li class="group-body">
         <ul>

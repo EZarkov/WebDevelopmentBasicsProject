@@ -8,10 +8,15 @@
 
 namespace Controllers\Admin;
 
+use Controllers\DefaultController;
 
-class Index {
+class Index extends DefaultController{
 	public function main() {
-		//echo "Raboti";
+		echo "Raboti";
 
+	}
+
+	public function user (){
+		echo 'user';
 	}
 }

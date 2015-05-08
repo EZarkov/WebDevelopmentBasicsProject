@@ -41,7 +41,7 @@ class App {
 
 
 	private function __construct() {
-		set_exception_handler(array($this, 'exceptionHandler'));
+		//set_exception_handler(array($this, 'exceptionHandler'));
 		Loader::registerNamespace('MVC', dirname(__FILE__) . DIRECTORY_SEPARATOR);
 		Loader::registerAutoload();
 	}
@@ -84,7 +84,7 @@ class App {
 		} else {
 			if ($this->_router == 'JsonRPCRouter') {
 				//TODO Fix when is ready json router
-				$this->_frontController->setRouter(new DefaultRouter());
+				$this->_frontController->setRouter(new \MVC\Routers\JsonRPCRouter());
 			} elseif ($this->_router == 'CLIRPCRouter') {
 				//TODO Fix when is ready CLI router
 				$this->_frontController->setRouter(new DefaultRouter());
@@ -113,6 +113,7 @@ class App {
 			$this->setSession($session);
 
 		}
+
 		$this->_frontController->dispatch();
 	}
 
@@ -150,8 +151,8 @@ class App {
 			$cnf[$connection]['pdo_options']
 		);
 		$this->_dbConections[$connection] = $db;
-
 		return $db;
+
 	}
 
 	/**

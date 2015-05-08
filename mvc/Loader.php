@@ -38,7 +38,6 @@ final class Loader {
 				if ($file && is_readable($file)) {
 					include $file;
 				} else {
-					//TODO
 					throw new \Exception ('File cannot be included: ' . $file);
 				}
 				break;
