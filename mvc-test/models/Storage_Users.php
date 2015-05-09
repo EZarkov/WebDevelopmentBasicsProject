@@ -29,9 +29,9 @@ class Storage_Users  extends Storage_Abstract{
 	}
 
 	public static function loginUser($name, $pass){
-
+;
 		$user = self::$db ->prepare('SELECT `password`, `id` FROM users WHERE `user` = ?', array($name))->execute()->fetchRowAssoc();
-		var_dump($user);
+
 		if ($user['password'] == $pass){
 			echo 'here';
 			return $user['id'];

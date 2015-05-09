@@ -9,11 +9,11 @@
 namespace Controllers;
 
 
-
+use Models\Storage_Posts;
 use Models\Storage_Users;
+use MVC\Common;
 
 class Index extends DefaultController {
-
 
 
 	public function main() {
@@ -24,19 +24,62 @@ class Index extends DefaultController {
 //		$val->setRule('url', 'http://gong.bg/')->setRule('minLength', 'http://gong.bg/', 5);
 //		var_dump($val->validate());
 
-var_dump($_SESSION);
+		var_dump($_SESSION);
 		$view = $this->view;
+		$categories = Storage_Posts::getAllCategories();
+		$topics = Storage_Posts::getAllTopicsWithDetails();
+		$data = array();
+		foreach ($categories as $category) {
 
-		$data = ['system' => [
-			'title' => ['category_id' => 1],
-		]];
+			foreach ($topics as &$topic) {
+				if ($category['id'] == $topic['category_id']) {
+					$category['topics'][] = $topic;
+				}
+			}
+			$data[] = $category;
 
+		}
 
+		unset ($categories);
 		$view->title = 'Dev Forum';
 		$view->data = $data;
-		$view->appendToLayout('body', 'body');
+		$view->appendToLayout('body', 'home');
 		$view->display('layouts/default');
 
+	}
+
+	public function showTopic() {
+		$get = $this->input->getGet();
+		$topicId = Common::normalize($get[0], 'int|xss');
+		$topicTitle = Common::normalize($get[1], 'string|xss');
+
+
+		$topic = Storage_Posts::getTopicById($topicId);
+
+		$postQuestions = Storage_Posts::getPostByTopicIdAndType($topicId, DefaultController::POST_TYPE_QUESTION);
+		$postAnswers = Storage_Posts::getPostByTopicIdAndType($topicId, DefaultController::POST_TYPE_ANSWER);
+		//var_dump($postAnswers);
+		$topic['post_count'] = Storage_Posts::getTopicPostCount($topicId);
+
+		foreach ($postQuestions as &$question) {
+			foreach ($postAnswers as $answer) {
+				if ($question['id'] == $answer['post_id']) {
+					$question['answers'][] = $answer;
+				}
+			}
+		}
+
+		usort($postQuestions, function ($a, $b) {
+			return $a['answers'][0]['created'] - $b['answers'][0]['created'];
+		});
+
+		$topic['posts'] = $postQuestions;
+
+		$view = $this->view;
+		$view->title = 'Dev Forum ' . $topicTitle;
+		$view->data = $topic;
+		$view->appendToLayout('body', 'show_topics');
+		$view->display('layouts/default');
 	}
 
 	public function login() {
@@ -44,13 +87,13 @@ var_dump($_SESSION);
 		$userId = Storage_Users::loginUser('test', '1234');
 		var_dump($userId);
 		if ($userId) {
-			$_SESSION['user_id'] =(int) $userId;
+			$_SESSION['user_id'] = (int)$userId;
 
 		} else {
-			
+
 		}
 		var_dump($_SESSION);
-header('Location: http://dev-forum.com');
+		header('Location: http://dev-forum.com');
 
 	}
 }

@@ -3,30 +3,32 @@
     <ul class="group">
         <li class="group-head">
             <ul>
-                <li><?= $data['cat_name']?></li>
+                <li><?= $this->data['title']?></li>
                 <li>Коментари</li>
                 <li>Последен коментар</li>
                 <li>Създадена</li>
             </ul>
         </li>
         <?php
-        for($i = 0; $i<count($data['topics']);$i++){
+		foreach ($this->data['posts'] as $post) {
+
+
         ?>
         <li class="group-body">
             <ul>
                 <li>
-                    <h3><a href="categoryId<?=$i+1?>">
-                            <?=$data['topics'][$i]['name']; ?></a></h3>
-                    <span><?=$data['topics'][$i]['substr']?></span>
+                    <h3><a href="/index/showPost/<?=$post['id']?>">
+                            <?= $post['title'] ?></a></h3>
+                    <span><?=substr($post['text'], 0, 50) ?>...</span>
                 </li>
-                <li><?=$data['topics'][$i]['comment_count']?></li>
+                <li><?=count($post['answers'])?></li>
                 <li><span style="line-height: 17px">
-                    <span class="date-of-last" ><span class="fa fa-clock-o"></span><?=$data['topics'][$i]['last_update']; ?></span>
-                    <span class="user-of-last"><span class="fa fa-user"></span><a href="#"><?= $data['topics'][$i]['last_comment_name']?></a></span>
+                    <span class="date-of-last" ><span class="fa fa-clock-o"></span><?=$post['answers'][0]['created']; ?></span>
+                    <span class="user-of-last"><span class="fa fa-user"></span><a href="#"><?= $post['answers'][0]['user']?></a></span>
                 </span></li>
                 <li>
-                    <span class="date-of-last"><span class="fa fa-clock-o"></span><?=$data['topics'][$i]['date']; ?></span>
-                    <span class="user-of-last"><span class="fa fa-user"></span><a href="#"><?= $data['username']?></a></span>
+                    <span class="date-of-last"><span class="fa fa-clock-o"></span><?=$post['created']; ?></span>
+                    <span class="user-of-last"><span class="fa fa-user"></span><a href="#"><?= $post['user']?></a></span>
                 </li>
 
             </ul>

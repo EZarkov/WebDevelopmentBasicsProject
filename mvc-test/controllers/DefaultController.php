@@ -31,6 +31,9 @@ class DefaultController {
 	 */
 	public $input;
 
+	const POST_TYPE_QUESTION = 0;
+	const POST_TYPE_ANSWER = 1;
+
 
 
 	public function __construct() {
